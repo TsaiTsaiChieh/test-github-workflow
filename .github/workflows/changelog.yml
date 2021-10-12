@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{github.event.pull_request.merged == true}}
     steps:
-      - name: Insert PR into CHANGELOG.md
       - uses: actions/checkout@v2
+      - name: Insert PR into CHANGELOG.md
         env:
           CLOSED_AT: ${{github.event.pull_request.closed_at}}
           PR_URL: ${{github.event.pull_request.html_url}}

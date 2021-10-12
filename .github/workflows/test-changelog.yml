@@ -1,4 +1,10 @@
 name: test-changelog.yml
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [closed]
+
 uses: srepollock/changelog-generator-action@master
 with:
   REPO_NAME: "srepollock/changelog-generator-action"

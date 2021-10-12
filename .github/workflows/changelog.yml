@@ -1,4 +1,4 @@
-name: Auto Changelog
+name: Auto changelog
 
 on:
   pull_request:
@@ -9,16 +9,17 @@ jobs:
   generate_changelog:
     name: Generate changelog for master branch
     runs-on: ubuntu-latest
-    if: ${{github.event.pull_request.merged == true}}
+    if: ${{ github.event.pull_request.merged == true }}
     steps:
       - uses: actions/checkout@v2
       - name: Insert PR into CHANGELOG.md
         env:
-          CLOSED_AT: ${{github.event.pull_request.closed_at}}
-          PR_URL: ${{github.event.pull_request.html_url}}
-          NUMBER: ${{github.event.pull_request.number}}
-          AUTHOR: ${{github.event.pull_request.user.login}}
-          PR_TITLE: ${{github.event.pull_request.title}}
+          CLOSED_AT: ${{ github.event.pull_request.closed_at}}
+          PR_URL: ${{ github.event.pull_request.html_url}}
+          NUMBER: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         run: |
           PR_TYPE=$(echo $PR_TITLE | cut -d"]" -f 1 | cut -d"[" -f 2)
           PR_SUB_TITLE=$(echo $PR_TITLE | cut -d"]" -f 2)
@@ -29,7 +30,6 @@ jobs:
           else
             echo ''"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')'
             sed -i ''"$LINE_INDEX"' a- '"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')' CHANGELOG.md
-            echo ::set-env name=commit::1
           fi
       - name: Commit CHANGELOG.md
         if: env.commit == 1

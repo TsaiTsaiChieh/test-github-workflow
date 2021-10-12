@@ -8,6 +8,7 @@ on:
 jobs:
   test_generate_changelog:
     name: Generate changelog for master branch
+    runs-on: ubuntu-latest
     steps:
       - uses: srepollock/changelog-generator-action@0.1.1
         with:

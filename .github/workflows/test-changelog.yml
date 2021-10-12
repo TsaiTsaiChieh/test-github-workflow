@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - name: Create changelog
         # Action location goes here. It's in root for this workflow. It may be different for your repo.
-        uses: ./
+        uses: srepollock/changelog-generator-action@0.1.1
         with:
           REPO_NAME: "TsaiTsaiChieh/test-github-workflow"
           ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}

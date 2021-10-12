@@ -8,9 +8,9 @@ on:
 jobs:
   test_generate_changelog:
   name: Generate changelog for master branch
-    uses: srepollock/changelog-generator-action@0.1.1
-    with:
-      REPO_NAME: "TsaiTsaiChieh/test-github-workflow"
-      ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      PATH: "/CHANGELOG.md"
-      COMMIT_MESSAGE: "docs(CHANGELOG): update release notes"
+    - uses: srepollock/changelog-generator-action@0.1.1
+      with:
+        REPO_NAME: "TsaiTsaiChieh/test-github-workflow"
+        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        PATH: "/CHANGELOG.md"
+        COMMIT_MESSAGE: "docs(CHANGELOG): update release notes"

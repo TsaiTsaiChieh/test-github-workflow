@@ -14,11 +14,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Insert PR into CHANGELOG.md
         env:
-          CLOSED_AT: ${{github.event.pull_request.closed_at}}
-          PR_URL: ${{github.event.pull_request.html_url}}
-          NUMBER: ${{github.event.pull_request.number}}
-          AUTHOR: ${{github.event.pull_request.user.login}}
-          PR_TITLE: ${{github.event.pull_request.title}}
+          CLOSED_AT: ${{ github.event.pull_request.closed_at}}
+          PR_URL: ${{ github.event.pull_request.html_url}}
+          NUMBER: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           PR_TYPE=$(echo $PR_TITLE | cut -d"]" -f 1 | cut -d"[" -f 2)
           PR_SUB_TITLE=$(echo $PR_TITLE | cut -d"]" -f 2)

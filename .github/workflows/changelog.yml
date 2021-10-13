@@ -30,16 +30,13 @@ jobs:
           else
             echo ''"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')'
             sed -i ''"$LINE_INDEX"' a- '"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')' CHANGELOG.md
-            echo ::set-env name=commit::1
           fi
       - name: Commit CHANGELOG.md
-        if: env.commit == 1
         run: |
           git config --local user.email "d0177381@gmail.com"
           git config --local user.name "github-action-bot"
           git add CHANGELOG.md
-          git commit -m '[Updated] CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          git commit -m '[Updated] CHANGELOG.md'|| echo "No changes to CHANGELOG.md"
       - name: Push commit
-        if: env.push == 1
         run: |
           git push

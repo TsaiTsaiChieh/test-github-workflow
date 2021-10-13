@@ -30,6 +30,7 @@ jobs:
           else
             echo ''"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')'
             sed -i ''"$LINE_INDEX"' a- '"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')' CHANGELOG.md
+            echo ::set-env name=commit::1
           fi
       - name: Commit CHANGELOG.md
         if: env.commit == 1

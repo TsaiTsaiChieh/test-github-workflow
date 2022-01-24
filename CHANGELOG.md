@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -  test file ***by TsaiTsaiChieh*** [#28](https://github.com/TsaiTsaiChieh/test-github-workflow/pull/28)
 
 #### Removed:
+-  rm changelog ***by TsaiTsaiChieh*** [#33](https://github.com/TsaiTsaiChieh/test-github-workflow/pull/33)
 -  rm set-env ***by TsaiTsaiChieh*** [#26](https://github.com/TsaiTsaiChieh/test-github-workflow/pull/26)
 
 #### Fixed:

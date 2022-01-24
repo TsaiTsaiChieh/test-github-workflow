@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 #### Added:
+-  file 6 ***by TsaiTsaiChieh*** [#32](https://github.com/TsaiTsaiChieh/test-github-workflow/pull/32)
 
 #### Changed:
 -  :sparkles: add develop branch ***by TsaiTsaiChieh*** [#30](https://github.com/TsaiTsaiChieh/test-github-workflow/pull/30)

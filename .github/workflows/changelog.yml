@@ -2,7 +2,7 @@ name: Auto changelog
 
 on:
   pull_request:
-    branches: [develop]
+    branches: [master]
     types: [closed]
 
 jobs:
@@ -19,26 +19,23 @@ jobs:
           NUMBER: ${{ github.event.pull_request.number }}
           AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_TITLE: ${{ github.event.pull_request.title }}
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         run: |
           PR_TYPE=$(echo $PR_TITLE | cut -d"]" -f 1 | cut -d"[" -f 2)
           PR_SUB_TITLE=$(echo $PR_TITLE | cut -d"]" -f 2)
           LINE_INDEX=$(grep -o -a -m 1 -h -r -n $PR_TYPE CHANGELOG.md | head -1 | cut -d":" -f 1)
           if [ -z "$LINE_INDEX" ]
           then
-            echo "PR TYPE錯誤"
+            echo "PR_TYPE error"
           else
             echo ''"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')'
             sed -i ''"$LINE_INDEX"' a- '"$PR_SUB_TITLE"' ***by '"$AUTHOR"'*** [#'"$NUMBER"']('"$PR_URL"')' CHANGELOG.md
           fi
       - name: Commit CHANGELOG.md
-        if: env.commit == 1
         run: |
           git config --local user.email "d0177381@gmail.com"
           git config --local user.name "github-action-bot"
           git add CHANGELOG.md
-          git commit -m '[Updated] CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+          git commit -m ':bookmark: updated CHANGELOG.md'|| echo "No changes to CHANGELOG.md"
       - name: Push commit
-        if: env.push == 1
         run: |
           git push
